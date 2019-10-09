@@ -1,16 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-export function TrackItem({ navigation }) {
 
+export function TrackItem({ navigation, track }) {
     return (
         <TouchableOpacity
             onPress={() => navigation.navigate('TrackDetails', {
-                trackId: 'id',
+                trackId: track.id,
             })}
             style={[styles.item]}
         >
-            <Text style={styles.title}>{"title"}</Text>
+            <Text style={styles.title} numberOfLines={1}>{track.title}</Text>
             <Text style={styles.title}>></Text>
         </TouchableOpacity>
     )
@@ -19,6 +19,7 @@ export function TrackItem({ navigation }) {
 
 const styles = StyleSheet.create({
     item: {
+        borderRadius: 10,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',

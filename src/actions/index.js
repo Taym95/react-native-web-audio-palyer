@@ -1,6 +1,10 @@
 
-export const TRACKS_REQUEST = 'myApp/TRACKS_REQUEST';
-export const TRACKS_LOADED = 'myApp/INCREMENT';
+export const REQUEST_TRACK_LIST = 'myApp/REQUEST_TRACK_LIST';
+export const TRACKS_LIST_LOADED = 'myApp/TRACKS_LIST_LOADED';
 
-export const tracksRequest = () => ({ type: TRACKS_REQUEST });
-export const tracksLoaded = ({ tracks }) => ({ type: TRACKS_LOADED, payload: tracks });
+export const PLAY_TRACK = 'myApp/PLAY_TRACK';
+
+export const playTrack = (track) => ({ type: PLAY_TRACK, payload: track }); 
+
+export const requestTrackList = () => ({ type: REQUEST_TRACK_LIST });
+export const trackListLoaded = (tracks) => ({ type: TRACKS_LIST_LOADED, payload: tracks }); 

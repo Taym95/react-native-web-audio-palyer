@@ -1,38 +1,26 @@
 import React from 'react';
-import { FlatList, StyleSheet, SafeAreaView } from 'react-native';
+import { connect } from 'react-redux';
+import { FlatList } from 'react-native';
+import { Loading } from '../loading';
 import { TrackItem } from './TrackItem';
 
 
-const DATA = [
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        title: 'First Item',
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        title: 'Second Item',
-    },
-    {
-        id: '58694a0f-3da1-471f-bd96-145571e29d72',
-        title: 'Third Item',
-    },
-];
-
-export function TrackList(props) {
+function TrackListComponent({ navigation, tracks }) {
+    if (tracks.length === 0) {
+        return <Loading />
+    }
     return (
-        <SafeAreaView style={styles.container}>
-            <FlatList
-                data={DATA}
-                renderItem={({ item }) => <TrackItem title={item.title} {...props} />}
-                keyExtractor={item => item.id}
-            />
-        </SafeAreaView>
+        <FlatList
+            data={tracks}
+            renderItem={({ item }) => <TrackItem track={item} navigation={navigation} />}
+            keyExtractor={track => track.id}
+        />
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginTop: '10px',
-    }
-});
+const mapStateToProps = state => ({ tracks: state.trackReducer.tracks })
+
+export const TrackList = connect(
+    mapStateToProps,
+    null
+)(TrackListComponent);

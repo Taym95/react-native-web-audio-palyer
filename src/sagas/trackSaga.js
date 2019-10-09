@@ -1,11 +1,13 @@
 
-import { put, take, delay } from 'redux-saga/effects';
-import { TRACKS_REQUEST, tracksLoaded } from '../actions';
+import { put, take } from 'redux-saga/effects';
+import { requestTrackList, trackListLoaded } from '../actions';
+import { getTrackList } from '../api';
 
 export function* todoSaga() {
+
     while (true) {
-        yield take(TRACKS_REQUEST);
-        yield delay(4000);
-        yield put(tracksLoaded([]));
+        yield take(requestTrackList);
+        const trackList = yield getTrackList();
+        yield put(trackListLoaded(trackList));
     }
 }
