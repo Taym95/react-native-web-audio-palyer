@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FlatList } from 'react-native';
 import { Loading } from '../loading';
-import { TrackItem } from './TrackItem';
+import { MemoizedTrackItem } from './TrackItem';
 
 
 function TrackListComponent({ navigation, tracks }) {
@@ -12,7 +12,7 @@ function TrackListComponent({ navigation, tracks }) {
     return (
         <FlatList
             data={tracks}
-            renderItem={({ item }) => <TrackItem track={item} navigation={navigation} />}
+            renderItem={({ item }) => <MemoizedTrackItem track={item} navigation={navigation} />}
             keyExtractor={track => track.id}
         />
     )

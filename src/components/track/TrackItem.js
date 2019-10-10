@@ -1,8 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
+// We can speed up the component re-rendring process 
+// by using React.memo(), wih will memoized our component
 
-export function TrackItem({ navigation, track }) {
+
+function TrackItem({ navigation, track }) {
     return (
         <TouchableOpacity
             onPress={() => navigation.navigate('TrackDetails', {
@@ -15,6 +18,9 @@ export function TrackItem({ navigation, track }) {
         </TouchableOpacity>
     )
 }
+
+export const MemoizedTrackItem = React.memo(TrackItem);
+
 
 
 const styles = StyleSheet.create({
