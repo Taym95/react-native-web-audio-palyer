@@ -1,2 +1,2 @@
 export { TrackList } from './track/TrackList';
-export { AudioPlayer } from './AudioPlayer';
+export { AudioPlayer } from './audioPlayer';

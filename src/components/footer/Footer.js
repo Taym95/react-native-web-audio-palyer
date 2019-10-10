@@ -20,5 +20,4 @@ const style = {
     flexDirection: 'column',
     height: 100,
     alignItems: 'center',
-    justifyContent: 'center'
 }

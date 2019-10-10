@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, Image } from 'react-native';
 import { getTrack } from '../api'
-import { NotFound } from '../components/notFound';
+import { Loading } from '../components/loading';
 import { useDispatch } from 'react-redux';
 import { playTrack } from '../actions';
 
@@ -32,10 +32,16 @@ const TrackDetails = ({ navigation, tracks }) => {
                     onPress={() =>
                         navigation.navigate('Home')}
                 />
-                <Text>{trackDetail.title}</Text>
+                <View style={styles.trackDetailContainer}>
+                    <Image
+                        source={{ uri: trackDetail.album.cover_medium }}
+                        style={styles.albumImg}
+                    />
+                    <Text style={styles.trackTitle}>{trackDetail.title}</Text>
+                </View>
             </View>)
     } else {
-        return <NotFound />;
+        return <Loading />;
     }
 }
 
@@ -44,6 +50,18 @@ const styles = StyleSheet.create({
         display: 'flex',
         flex: 1
     },
+    albumImg: {
+        width: 300,
+        height: 300,
+    },
+    trackDetailContainer: {
+        padding: 5,
+        alignItems: 'center'
+    },
+    trackTitle: {
+        marginTop: 5,
+        fontSize : 20
+    }
 });
 
 export default TrackDetails;
