@@ -19,9 +19,9 @@ function TrackItem({ navigation, track }) {
     )
 }
 
-export const MemoizedTrackItem = React.memo(TrackItem);
+const MemoizedTrackItem = React.memo(TrackItem);
 
-
+export default MemoizedTrackItem;
 
 const styles = StyleSheet.create({
     item: {

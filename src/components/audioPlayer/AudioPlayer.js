@@ -10,7 +10,7 @@ function AudioPlayerComponent({ track }) {
             <figure>
                 <audio
                     controls
-                    src={track ? track.preview : ''} autoplay >
+                    src={track ? track.preview : ''} >
                     Your browser does not support HTML5 audio tag.
                 </audio>
             </figure>
