@@ -8,6 +8,10 @@ import { TrackDetails } from './screens';
 import { AudioPlayer } from './components';
 import { store } from './store';
 
+
+// I am using only one screen size style, but if I want to support different size
+// I need to listen to window size changes using the react-native Dimensions API. 
+
 const RootStack = createSwitchNavigator({
   initialRouteName: Home,
   Home: {
